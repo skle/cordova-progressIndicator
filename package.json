@@ -30,7 +30,7 @@
   "license": "Apache 2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pbernasconi/cordova-progressIndicator.git"
+    "url": "https://github.com/complianceexperts/cordova-progressIndicator.git"
   },
-  "homepage": "http://paolobernasconi.com/cordova-progressIndicator/"
+  "homepage": "https://github.com/complianceexperts/cordova-progressIndicator"
 }
