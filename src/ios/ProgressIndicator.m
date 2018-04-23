@@ -17,6 +17,9 @@
     //UIColor* color = [command.arguments objectAtIndex:1];
     
     // initialize indicator with options, text, detail
+	if(self.progressIndicator != nil){
+		[self.progressIndicator hide:YES];
+	}
     self.progressIndicator = nil;
     self.progressIndicator = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
     self.progressIndicator.mode = MBProgressHUDModeIndeterminate;
@@ -45,6 +48,9 @@
     //UIColor* color = [command.arguments objectAtIndex:2];
     
     // initialize indicator with options, text, detail
+	if(self.progressIndicator != nil){
+		[self.progressIndicator hide:YES];
+	}
     self.progressIndicator = nil;
     self.progressIndicator = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
     self.progressIndicator.mode = MBProgressHUDModeIndeterminate;
@@ -75,6 +81,9 @@
     //UIColor* color = [command.arguments objectAtIndex:3];
     
     // initialize indicator with options, text, detail
+	if(self.progressIndicator != nil){
+		[self.progressIndicator hide:YES];
+	}
     self.progressIndicator = nil;
     self.progressIndicator = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
     self.progressIndicator.mode = MBProgressHUDModeIndeterminate;
@@ -108,6 +117,9 @@
     //UIColor* color = [command.arguments objectAtIndex:2];
     
     // initialize indicator with options, text, detail
+	if(self.progressIndicator != nil){
+		[self.progressIndicator hide:YES];
+	}
     self.progressIndicator = nil;
     self.progressIndicator = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
     self.progressIndicator.mode = MBProgressHUDModeText;
@@ -153,6 +165,9 @@
     NSNumber* incrementValue = @(increment);
     
     // initialize indicator with options, text, detail
+	if(self.progressIndicator != nil){
+		[self.progressIndicator hide:YES];
+	}
     self.progressIndicator = nil;
     self.progressIndicator = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
     self.progressIndicator.mode = MBProgressHUDModeDeterminate;
@@ -185,6 +200,9 @@
     NSString* text = [command.arguments objectAtIndex:2];
     
     // initialize indicator with options, text, detail
+	if(self.progressIndicator != nil){
+		[self.progressIndicator hide:YES];
+	}
     self.progressIndicator = nil;
     self.progressIndicator = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
     self.progressIndicator.mode = MBProgressHUDModeDeterminate;
@@ -216,6 +234,9 @@
     NSNumber* incrementValue = @(increment);
     
     // initialize indicator with options, text, detail
+	if(self.progressIndicator != nil){
+		[self.progressIndicator hide:YES];
+	}
     self.progressIndicator = nil;
     self.progressIndicator = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
     self.progressIndicator.mode = MBProgressHUDModeAnnularDeterminate;
@@ -246,6 +267,9 @@
     NSString* text = [command.arguments objectAtIndex:2];
     
     // initialize indicator with options, text, detail
+	if(self.progressIndicator != nil){
+		[self.progressIndicator hide:YES];
+	}
     self.progressIndicator = nil;
     self.progressIndicator = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
     self.progressIndicator.mode = MBProgressHUDModeAnnularDeterminate;
@@ -277,6 +301,9 @@
     NSNumber* incrementValue = @(increment);
     
     // initialize indicator with options, text, detail
+	if(self.progressIndicator != nil){
+		[self.progressIndicator hide:YES];
+	}
     self.progressIndicator = nil;
     self.progressIndicator = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
     self.progressIndicator.mode = MBProgressHUDModeDeterminateHorizontalBar;
@@ -309,6 +336,9 @@
     NSString* text = [command.arguments objectAtIndex:2];
     
     // initialize indicator with options, text, detail
+	if(self.progressIndicator != nil){
+		[self.progressIndicator hide:YES];
+	}
     self.progressIndicator = nil;
     self.progressIndicator = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
     self.progressIndicator.mode = MBProgressHUDModeDeterminateHorizontalBar;
@@ -339,6 +369,9 @@
     NSString* text = [command.arguments objectAtIndex:1];
     
     // initialize indicator with options, text, detail
+	if(self.progressIndicator != nil){
+		[self.progressIndicator hide:YES];
+	}
     self.progressIndicator = nil;
     self.progressIndicator = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
     self.progressIndicator.mode = MBProgressHUDModeCustomView;
@@ -372,6 +405,9 @@
  
  
  // initialize indicator with options, text, detail
+ if(self.progressIndicator != nil){
+		[self.progressIndicator hide:YES];
+	}
  self.progressIndicator = nil;
  self.progressIndicator = [MBProgressHUD showHUDAddedTo:self.webView.superview animated:YES];
  self.progressIndicator.mode = MBProgressHUDModeCustomView;
@@ -405,7 +441,7 @@
 		return;
 	}
 	[self.progressIndicator hide:YES];
-    self.progressIndicator = nil;
+	self.progressIndicator = nil;
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@""];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
