@@ -4,38 +4,26 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
+
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.ProgressBar;
+
+import androidx.core.content.ContextCompat;
 
 public class ProgressIndicator extends CordovaPlugin {
 
-    private ProgressDialog progressIndicator = null;
+    private Dialog progressIndicator = null;
 	private static final String LOG_TAG = "ProgressIndicator";
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("show")) {
+        if (action.equals("show") || action.equals("showSimple")) {
             show();
-            callbackContext.success();
-            return true;
-        } else if (action.equals("showSimple")) {
-            show();
-            callbackContext.success();
-            return true;
-        } else if (action.equals("showSimpleWithLabel")) {
-            String title = args.getString(1);
-            show(title);
-            callbackContext.success();
-            return true;
-        } else if (action.equals("showSimpleWithLabelDetail")) {
-            String title = args.getString(1);
-            String text = args.getString(2);
-            show(title, text, true);
-            callbackContext.success();
-            return true;
-        } else if (action.equals("showText")) {
-            String title = args.getString(1);
-			String text = args.getString(2);
-            show(title, text, false);
             callbackContext.success();
             return true;
         } else if (action.equals("hide")) {
@@ -43,7 +31,7 @@ public class ProgressIndicator extends CordovaPlugin {
             callbackContext.success();
             return true;
         } else {
-            callbackContext.error("Not supported call. On Android we only support show, showSimple, showSimpleWithLabel and showSimpleWithLabelDetail");
+            callbackContext.error("Not supported call. On Android we only support show, showSimple");
 		}
 
         return false;
@@ -52,35 +40,18 @@ public class ProgressIndicator extends CordovaPlugin {
     /**
      * This show the ProgressDialog
      *
-     * @param text - Message to display in the Progress Dialog
      */
     public void show() {
-        progressIndicator = new ProgressDialog(cordova.getActivity());
-		progressIndicator.show();
-    }
-
-    /**
-     * This show the ProgressDialog
-     *
-     * @param text - Message to display in the Progress Dialog
-     */
-    public void show(String text) {
-        progressIndicator = new ProgressDialog(cordova.getActivity());
-		progressIndicator.setTitle(text);
-		progressIndicator.show();
-    }
-
-    /**
-     * This show the ProgressDialog
-     *
-     * @param text - Message to display in the Progress Dialog
-     */
-    public void show(String title, String detail, Boolean withTitle) {
-        progressIndicator = new ProgressDialog(cordova.getActivity());
-		if(withTitle)
-			progressIndicator.setTitle(title);
-		progressIndicator.setMessage(detail);
-		progressIndicator.show();
+        progressIndicator = new Dialog(cordova.getActivity());
+        ProgressBar _ProgressBar = new ProgressBar(cordova.getActivity());
+        _ProgressBar.setIndeterminate(true);
+        _ProgressBar.setIndeterminateTintMode(android.graphics.PorterDuff.Mode.SRC_IN);
+        _ProgressBar.setIndeterminateTintList(ColorStateList.valueOf(Color.BLACK));
+        _ProgressBar.setVisibility(View.VISIBLE);
+        progressIndicator.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        progressIndicator.getWindow().setDimAmount(0.0f);
+        progressIndicator.setContentView(_ProgressBar);
+        progressIndicator.show();
     }
 
     /**
